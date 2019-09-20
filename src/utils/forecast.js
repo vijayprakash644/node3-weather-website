@@ -8,7 +8,10 @@ const forecast = ( latitude, longitude, callback ) => {
         } else if (body.error){
             callback('', undefined)
         } else {
-            callback(undefined, body.daily.data[0].summary + " It is currently "+body.currently.temperature +" degress out. There is "+body.currently.precipProbability+ "% chances of rain.")
+            forcastMessage= body.daily.data[0].summary +" It is currently "+body.currently.temperature +" degress out. There is "+body.currently.precipProbability+ "% chances of rain.\n"
+            forcastMessage+= " Today's High Temprature: "+ body.daily.data[0].temperatureHigh
+            forcastMessage+= " Today's Low Temprature: "+ body.daily.data[0].temperatureLow
+            callback(undefined,  forcastMessage )
         }    
    
    })
